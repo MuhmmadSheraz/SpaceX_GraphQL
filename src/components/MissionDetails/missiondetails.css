@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  overflow-x: hidden;
+}
+.detailWrapper {
+  height: 100vh;
+  width: 100%;
+}
+.subWrapper {
+  margin: 0px 20px;
+}
+.Intro_Wrapper {
+  text-align: left;
+}
+.text_info {
+  font-size: 25px;
+  font-weight: 550;
+  display: block;
+  margin-bottom: 15px;
+  border-bottom: 4px solid lightblue;
+  padding: 10px 0px;
+}
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.imagesWrapper {
+  text-align: center;
+  margin: 0px 10px;
+}
+.fullImages {
+  height: 500px;
+  width: 300px;
+}

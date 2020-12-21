@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component Should Passes UI Test 1`] = `
+<WithStyles(ForwardRef(Card))
+  className="makeStyles-rootcard-1"
+>
+  <WithStyles(ForwardRef(CardActionArea))>
+    <WithStyles(ForwardRef(CardMedia))
+      className="makeStyles-media-2"
+      title="Contemplative Reptile"
+    />
+    <img
+      alt="Missile"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
+      style={
+        Object {
+          "maxHeight": "30vh",
+          "maxWidth": "100%",
+          "minHeight": "50vh",
+          "minWidth": "100%",
+        }
+      }
+    />
+    <WithStyles(ForwardRef(CardContent))>
+      <WithStyles(ForwardRef(Typography))
+        component="h2"
+        gutterBottom={true}
+        variant="h5"
+      />
+      <WithStyles(ForwardRef(Typography))
+        color="textSecondary"
+        component="p"
+        variant="body2"
+      >
+        Launch Year :
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(CardContent))>
+  </WithStyles(ForwardRef(CardActionArea))>
+  <WithStyles(ForwardRef(CardActions))>
+    <Link
+      to="/MissionDetails/"
+    >
+      <WithStyles(ForwardRef(Button))
+        color="primary"
+        size="small"
+      >
+        Details
+      </WithStyles(ForwardRef(Button))>
+    </Link>
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+      onClick={[Function]}
+      size="small"
+    >
+      Learn More
+    </WithStyles(ForwardRef(Button))>
+  </WithStyles(ForwardRef(CardActions))>
+</WithStyles(ForwardRef(Card))>
+`;
