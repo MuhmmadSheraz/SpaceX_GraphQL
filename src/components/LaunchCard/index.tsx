@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
   rootcard: {
-    maxWidth: 500,
-    maxHeight:1000,
+    maxWidth: 450,
+    maxHeight: 1000,
   },
   media: {
     // height: 140,
@@ -31,11 +31,8 @@ type card = {
   data: any;
 };
 const LaunchCard: React.FC<card> = ({ data }) => {
-  useEffect(()=>{
-    console.log("data111111111111111111111",data)
-  },[])
   const classes = useStyles();
-  
+
   const goto = (a: string) => {
     window.open(a);
   };

@@ -1,8 +1,8 @@
-import { ApolloClient } from "apollo-client";
+import { ApolloClient } from "@apollo/client";
 import { HttpLink } from "apollo-link-http";
 import { CachePersistor } from "apollo-cache-persist";
 import { InMemoryCache,NormalizedCacheObject } from "apollo-cache-inmemory";
-import { PersistedData, PersistentStorage } from "apollo-cache-persist/types";
+import { PersistentStorage, PersistedData } from 'apollo-cache-persist/types';
 
 const API_HOST = "https://spacexdata.herokuapp.com/graphql";
 const SCHEMA_VERSION = "1";
@@ -10,12 +10,11 @@ const SCHEMA_VERSION_KEY = "apollo-schema-version";
 
 const getApolloClient = async () => {
   const httpLink = new HttpLink({ uri: API_HOST });
-  const cache = new InMemoryCache();
+  const cache = new InMemoryCache() as any;
 
   const persistor = new CachePersistor({
     cache,
     storage: window.localStorage as PersistentStorage<PersistedData<NormalizedCacheObject>>,
-
   });
 
   const currentVersion = window.localStorage.getItem(SCHEMA_VERSION_KEY);
@@ -27,7 +26,7 @@ const getApolloClient = async () => {
     window.localStorage.setItem(SCHEMA_VERSION_KEY, SCHEMA_VERSION);
   }
 
-  return new ApolloClient({ link: httpLink, cache });
+  return new ApolloClient({ link: httpLink as any, cache });
 };
 
 export default getApolloClient;

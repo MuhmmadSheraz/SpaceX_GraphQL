@@ -1,10 +1,13 @@
-import React from 'react';
-import App from './App';
-import RouterMain from "./Config/router";
-import { shallow } from 'enzyme';
-describe('App Component', () => {
-  it('Should Render RouterMain Component', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.containsMatchingElement(<RouterMain />)).toEqual(true);
+import React from "react";
+import { shallow } from "enzyme";
+import App from "./App";
+
+describe("App Component", () => {
+  let container: any;
+
+  beforeEach(() => (container = shallow(<App />)));
+
+  it("should render   1 div", () => {
+    expect(container.find("div").length).toEqual(1);
   });
 });

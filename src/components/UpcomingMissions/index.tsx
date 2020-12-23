@@ -24,20 +24,26 @@ const UpcomingMissions = () => {
   const { data, error, loading } = useUpcomingLaunchesListQuery();
 
   if (loading) return <h2>Latest Missions Loading...</h2>;
- 
+
   const date = new Date();
   let year = date.getFullYear();
   return (
-    <>
+    <div style={{ height: "100vh", width: "100vw" }}>
       <h1>Latest Launches By 2020</h1>
-      <div style={{ justifyContent: "center", alignItems: "center " ,margin:"10px"}}>
+      <div
+        style={{
+          justifyContent: "center",
+          alignItems: "center ",
+          margin: "10px",
+        }}
+      >
         <Grid container spacing={5}>
           {data &&
             data.launches?.map((x) => {
               if (x && x.launch_year === year) {
                 console.log(year);
                 return (
-                  <Grid item xs={12} sm ={4}>
+                  <Grid item xs={12} sm={4}>
                     <LaunchCard data={x} />
                   </Grid>
                 );
@@ -45,7 +51,7 @@ const UpcomingMissions = () => {
             })}
         </Grid>
       </div>
-    </>
+    </div>
   );
 };
 const styles = {

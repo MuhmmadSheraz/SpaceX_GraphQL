@@ -5,11 +5,6 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 import { useMissionInfoQuery } from "../../generated/graphql";
 import Grid, { GridSpacing } from "@material-ui/core/Grid";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
-import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,6 +30,7 @@ const MissionDetails = () => {
   const { data, loading, error } = useMissionInfoQuery({
     variables: { id: String(slug) },
   });
+  console.log("data===>", data);
   const [spacing, setSpacing] = React.useState<GridSpacing>(2);
   const classes = useStyles();
 
@@ -52,13 +48,16 @@ const MissionDetails = () => {
           </span>
           <span className="text_info">
             Launch Successs:
-            {data && data.launch?.launch_success
-              ? "Successful"
-              : "Unsuccessfull"}
+            {data && data.launch?.launch_success ? (
+              <span style={{ color: "green" }}> Successful</span>
+            ) : (
+              <span style={{ color: "red" }}> Unsuccessful</span>
+            )}
           </span>
           <span className="text_info">
             Launch Year: {data && data.launch?.launch_year}
           </span>
+          ,{" "}
           <span className="text_info">
             Launch Date: {data && data.launch?.launch_date_local}
           </span>
