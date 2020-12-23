@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { UpcomingLaunchesListQuery } from "../../generated/graphql";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -8,7 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-
+import offlineImage from "./offline.jpg";
 import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
   rootcard: {
@@ -32,7 +32,19 @@ type card = {
 };
 const LaunchCard: React.FC<card> = ({ data }) => {
   const classes = useStyles();
+  const [isOffline, setIsOffline] = useState(false);
 
+  useEffect(() => {
+    console.log(isOffline);
+    if (navigator.onLine) {
+      setIsOffline(false);
+      console.log("online");
+    } else {
+      setIsOffline(true);
+      console.log("offline");
+    }
+    // isOnline();
+  }, [isOffline]);
   const goto = (a: string) => {
     window.open(a);
   };
@@ -40,20 +52,33 @@ const LaunchCard: React.FC<card> = ({ data }) => {
     <Card className={classes.rootcard}>
       <CardActionArea>
         <CardMedia className={classes.media} title="Contemplative Reptile" />
-        <img
-          src={
-            data && data.links.flickr_images[0]
-              ? data.links.flickr_images[0]
-              : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
-          }
-          alt="Missile"
-          style={{
-            maxWidth: "100%",
-            maxHeight: "30vh",
-            minHeight: "50vh",
-            minWidth: "100%",
-          }}
-        />
+        {!isOffline ? (
+          <img
+            src={
+              data && data.links.flickr_images[0]
+                ? data.links.flickr_images[0]
+                : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
+            }
+            alt="Missile"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "30vh",
+              minHeight: "50vh",
+              minWidth: "100%",
+            }}
+          />
+        ) : (
+          <img
+            src={offlineImage}
+            alt="Missile"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "30vh",
+              minHeight: "50vh",
+              minWidth: "100%",
+            }}
+          />
+        )}
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {data?.mission_name}
