@@ -40,14 +40,14 @@ const UpcomingMissions = () => {
         <Grid container spacing={5}>
           {data &&
             data.launches?.map((x,index) => {
-              if (x && x.launch_year === year) {
+//               if (x && x.launch_year === year) {
                 console.log(year);
                 return (
                   <Grid key={index} item xs={12} sm={4}>
                     <LaunchCard data={x} />
                   </Grid>
                 );
-              }
+//               }
             })}
         </Grid>
       </div>
